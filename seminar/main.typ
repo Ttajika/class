@@ -1,3 +1,4 @@
+#import "@preview/roremu:0.1.0": roremu
 #import "lib/setting.typ": *
 #show: project.with(
   title: "タイトル",
@@ -13,15 +14,24 @@
 )
 
 = はじめに
+#lorem(140)
+
+#lorem(140)
+
 
 = 関連文献
 
+#roremu(330)
+
 = 本論/方法
 
+#roremu(400,offset: 330)
 
-
+#roremu(400,offset: 730)
 
 
 
 
 = 結論
+
+#lorem(140)
