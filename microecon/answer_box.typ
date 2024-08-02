@@ -4,7 +4,7 @@ answerbox.sty (https://hohei3108.hatenablog.com/entry/2022/01/27/005123) をTyps
 
 //#let ansbox_num = counter("ansbox_num") 
 
-#let h_out(height, rows) = {
+#let copy_array(height, rows) = {
 if type(height) != array {
   let heights = ()
   for i in range(rows){
@@ -18,8 +18,8 @@ else {return height }
 #let ansbox(..args, type: "default", daimon: "1", shomon: "(1)", height:1.5cm,answer:(), hideanswer:false, shomon_width:2em, daimon_width:2em, box_width:1fr, shomon_start:1) = {
 let list = args.pos()
 let rows = list.len()
-let heights = h_out(height, rows)
-let box_widths = h_out(box_width, rows)
+let heights = copy_array(height, rows)
+let box_widths = copy_array(box_width, rows)
 //ansbox_num.step()
 let row_list = ()
 let cur_sho = shomon_start
@@ -87,4 +87,4 @@ $]),height:auto,hideanswer:true)
 
 #ansbox(3,2,1, daimon:none, shomon:"問1.", shomon_width:4em)
 //#v(-.47cm)
-#ansbox(3,2,1, daimon:none, shomon:"問1.", shomon_width:4em, shomon_start:7, box_width:(2cm,3cm,2cm))
+#ansbox(3,2,2, daimon:none, shomon:"問1.", shomon_width:4em, shomon_start:7, answer:([],[],[],[],[],[#image("img/patterns.png",width:100%)],[文字の大きさ]), box_width:(2cm,3cm,auto), height:(1cm,2cm,auto))
