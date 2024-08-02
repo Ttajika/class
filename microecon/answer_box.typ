@@ -3,7 +3,7 @@
 #let ansbox_num = counter("ansbox_num") 
 
 #let h_out(height, rows) = {
-if type(height) == length {
+if type(height) != array {
   let heights = ()
   for i in range(rows){
     heights.push(height)
@@ -13,7 +13,7 @@ if type(height) == length {
 else {return height }
 }
 
-#let ansbox(..args, type: "default", daimon: "1", shomon: "(1)", height:1cm,answer:(), hideanswer:false) = {
+#let ansbox(..args, type: "default", daimon: "1", shomon: "(1)", height:1.5cm,answer:(), hideanswer:false) = {
 let list = args.pos()
 let rows = list.len()
 let heights = h_out(height, rows)
@@ -62,8 +62,13 @@ align:center+horizon,
 
 #ansbox(1,2,3, answer:([1],[2],[3],[4],[5],[$
 (sum d^3)/(sum d^3)
-$]),height:(auto,auto,auto))
+$]),height:(2cm,auto,auto))
 
 #ansbox(1,2,3, answer:([1],[2],[3],[4],[5],[$
 (sum d^3)/(sum d^3)
-$]),height:(auto,auto,auto),hideanswer:true)
+$]),height:auto,hideanswer:true)
+
+#ansbox(1,4,3)
+
+
+#ansbox(1,4,10,10,10,10,10,10,10,10,10,10,4)
