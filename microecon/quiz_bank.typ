@@ -13,11 +13,21 @@
 #let cat_list =("Term1",)
 
 
-//使い方
-//Quiz_createで問題のリストを作成する
-//問題のリストはquizのarrayであるので，引数にquizをとる
-//quizの第一引数は問題のIDである． これはstr型をとる
-//他の引数は, question, answer, point, category, commentaryなどがある.
+
+Quiz_createで問題のリストを作成する． Quiz = Quiz_createとするとQuizが問題のリストを格納する変数
+
+- quiz関数で，形式に合った問題を作成する. 以下その各種引数の説明
+
+- 最初の引数はid: これがラベルにもなるので，問題を引用するときは @Q2 のようにできる．回答のラベルはAをつけて @Q2A
+  - なので別のidにAをつけたものをidにするとラベルが重複しエラーが出るので注意．
+
+- question: 問題文. []　の中に入力する
+
+- answer: 解答. [] の中に入力する
+
+- commentary:  解説. [] の中に入力する
+
+- point: 配点． 整数を入力する. 合計点を計算するシステムは未実装．
 
 #let Quiz = Quiz_create(
   quiz("Q1", question:[
@@ -103,13 +113,6 @@ quiz("Q13",question:[第１財と第２財しか購入しない消費者を考�
 
 
 
-//Quiz_createで問題のリストを作成する． Quiz = Quiz_createとするとQuizが問題のリストを格納する変数
-// quiz関数で，形式に合った問題を作成する. 以下その各種引数の説明
-// 最初の引数はid: これがラベルにもなるので，問題を引用するときは@Q2のようにできる．回答のラベルはAをつけて@Q2A
-// question: 問題文. []　の中に入力する
-// answer: 解答. [] の中に入力する
-// commentary:  解説. [] の中に入力する
-// point: 配点． 整数を入力する. 合計点を計算するシステムは未実装．
 
 
 
