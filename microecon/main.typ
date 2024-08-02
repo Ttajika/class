@@ -41,7 +41,15 @@
 //size: 出力する問題の数を指定する
 //seed：問題を選ぶための乱数のシード．デフォルトは今日の日付(ymd)の積（y*m*d）. シードが同じなら乱数も同じ．
 
+解答欄も作ることができる．
 
+#import "answer_box.typ":*
+
+
+
+#ansbox(3,2,1, daimon:none, shomon:"問1.", shomon_width:4em)
+//#v(-.47cm)
+#ansbox(3,2,1, daimon:none, shomon:"問1.", shomon_width:4em, shomon_start:7, box_width:2cm)
 
 
 
