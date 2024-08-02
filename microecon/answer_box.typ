@@ -48,7 +48,6 @@ if daimon != none{
 grid(columns:(daimon_width, 1fr),   
 grid.cell(rowspan: rows,
 stroke: 1pt,
-inset: 10pt,
 align:center+horizon,
 [#numbering(daimon,..it.counter.at(it.location()))],
 ),   ..row_list
@@ -60,7 +59,7 @@ grid(columns:(1fr),
 } 
 
 }
-figure([1])
+figure([1],kind:"answerbox",supplement: none)
 }
 
 
