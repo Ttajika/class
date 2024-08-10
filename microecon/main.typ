@@ -9,7 +9,7 @@
 = ミクロ経済学問題集
 
 \
-#tests_gen(Quiz,style:"Q", numbering-style: "number", subgroups:("Q1", "Q2"), categories:(), mode:"", question-style: test-question-style, answer-style: test-answer-style)
+#tests_gen(Quiz,style:"Q", numbering-style: "number", subgroups:("Q11", "Q3"), categories:(), mode:"sub", question-style: test-question-style, answer-style: test-answer-style)
 
 
 それぞれの変数の説明
@@ -47,9 +47,9 @@
 
 #import "answer_box.typ":*
 
+#ansbox(1,2,3)
 
-
-#ansbox(3,2,2, daimon:none, shomon:"問1.", shomon_width:4em, shomon_start:7, answer:([],[],[],[],[],[#image("img/patterns.png",width:100%)],[文字の大きさ]), box_width:(2cm,1fr,auto), height:(1cm,2cm,auto))
+#ansbox(3,2,2, daimon:none, shomon:"問1.", shomon_width:4em, shomon_start:7, content:([],[],[],[],[],[#image("img/patterns.png",width:100%)],[文字の大きさ]), box_width:(2cm,1fr,auto), height:(1cm,2cm,auto), hideanswer:true)
 
 #counter(figure.where(kind:"answerbox")).update(13)
 

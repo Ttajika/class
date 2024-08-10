@@ -1,4 +1,4 @@
-answerbox.sty (https://hohei3108.hatenablog.com/entry/2022/01/27/005123) をTypstに移植することを目標にする
+//answerbox.sty (https://hohei3108.hatenablog.com/entry/2022/01/27/005123) をTypstに移植することを目標にする
 
 
 
@@ -15,7 +15,7 @@ if type(height) != array {
 else {return height }
 }
 
-#let ansbox(..args, type: "default", daimon: "1", shomon: "(1)", height:1.5cm,answer:(), hideanswer:false, shomon_width:2em, daimon_width:2em, box_width:1fr, shomon_start:1) = {
+#let ansbox(..args, type: "default", daimon: "1", shomon: "(1)", height:1.5cm,content:(), hide-content:false, shomon_width:2em, daimon_width:2em, box_width:1fr, shomon_start:1, inset: 4pt) = {
 let list = args.pos()
 let rows = list.len()
 let heights = copy_array(height, rows)
@@ -34,10 +34,10 @@ for i in range(rows) {
     col_cel.push(shomon_width)
     col_cel.push(box_widths.at(i))
     cells.push([#numbering(shomon, cur_sho)])
-    cells.push([#if answer != () {if hideanswer == true{hide[#answer.at(total+j)]}else{answer.at(total+j)} }])
+    cells.push([#if content != () {if hide-content == true{hide[#content.at(total+j)]}else{content.at(total+j)} }])
     cur_sho = cur_sho + 1
   }
-  row_list.push(table(stroke: (x,y) => {if calc.odd(x) {(left:(dash:"dotted"), right:1pt, y:1pt) } else {(x:1pt, y:1pt)}}, columns:col_cel,..cells,rows:heights.at(i), align:algn))
+  row_list.push(table(inset:inset,stroke: (x,y) => {if calc.odd(x) {(left:(dash:"dotted"), right:1pt, y:1pt) } else {(x:1pt, y:1pt)}}, columns:col_cel,..cells,rows:heights.at(i), align:algn))
   total = total + list.at(i)
 
 }
@@ -45,7 +45,8 @@ let colls
 show figure: it => {
 
 if daimon != none{
-grid(columns:(daimon_width, 1fr),   
+grid(
+columns:(daimon_width, 1fr),   
 grid.cell(rowspan: rows,
 stroke: 1pt,
 align:center+horizon,
@@ -58,9 +59,13 @@ grid(columns:(1fr),
 )
 } 
 
+} 
+figure([],kind:"answerbox",supplement: none)
 }
-figure([1],kind:"answerbox",supplement: none)
-}
+
+
+
+= example:
 
 
 
@@ -70,20 +75,18 @@ figure([1],kind:"answerbox",supplement: none)
 
 #ansbox(4,2,3, daimon:"1", shomon:"(a)", height:(1cm,2cm,3cm))
 
-#ansbox(1,2,3, answer:([1],[2],[3],[4],[5],[$
+#ansbox(2,3, content:([2],[3],[4],[5],[$
 (sum d^3)/(sum d^3)
 $]),height:(2cm,auto,auto))
 
-#ansbox(1,2,3, answer:([1],[2],[3],[4],[5],[$
+#ansbox(2,3, content:([2],[3],[4],[5],[$
 (sum d^3)/(sum d^3)
-$]),height:auto,hideanswer:true)
-
-#ansbox(1,4,3)
+$]),height:auto,hide-content:true)
 
 
-#ansbox(1,4,10, daimon:none)
 
 
-#ansbox(3,2,1, daimon:none, shomon:"問1.", shomon_width:4em)
-//#v(-.47cm)
-#ansbox(3,2,2, daimon:none, shomon:"問1.", shomon_width:4em, shomon_start:7, answer:([],[],[],[],[],[#image("img/patterns.png",width:100%)],[文字の大きさ]), box_width:(2cm,3cm,auto), height:(1cm,2cm,auto))
+
+//#ansbox(3,2,1, daimon:none, shomon:"問1.", shomon_width:4em)
+
+#ansbox(3,2, inset:0pt, daimon:none, shomon:"問1.", shomon_width:4em, shomon_start:7, content:([],[],[],[#h(1fr)],ansbox(1,2,daimon:none,box_width:(2cm,1fr))), box_width:(2cm,auto,auto), height:(1cm,auto,auto))
