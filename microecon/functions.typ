@@ -215,7 +215,10 @@ tests_gen(quizbank, subgroups: chosen_groups,  categories:(), style: style, numb
   if n == none {
     let kuran_count = counter("kuran_counter")
     kuran_count.step()
-    box(inset:(x:9pt,y:3pt), stroke:1pt,baseline: 20%)[#kuran_count.display(katanumb)]
+    box(inset:(x:9pt,y:3pt), stroke:1pt,baseline: 20%)[#context[#numbering(katanumb,kuran_count.get().at(0))
+    
+    ]
+    ]
   }
   else {
     box(inset:(x:9pt,y:3pt), stroke:1pt,baseline: 20%)[#numbering(katanumb,n)]
