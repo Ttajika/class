@@ -193,3 +193,33 @@ let chosen_groups = ()
 tests_gen(quizbank, subgroups: chosen_groups,  categories:(), style: style, numbering-style: numbering-style,mode:"sub", show-total-score: show-total-score, question-style: question-style, answer-style: answer-style)
 }
 
+#let numberer(pre:"", post:"", chars) ={
+  let cs = chars.clusters()
+  let csl = cs.len()
+  (n) => {
+    let s = if 0 < n and n <= csl {cs.at(n - 1)}
+    pre + s + post
+  } 
+}
+
+#let katanumb = numberer(pre:"",post:"","アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン")
+
+#let kuranenv(body) = {
+      let kuran_count = counter("kuran_counter")
+      kuran_count.update(0)
+      body
+}
+
+
+#let kuran(n:none) ={
+  if n == none {
+    let kuran_count = counter("kuran_counter")
+    kuran_count.step()
+    box(inset:(x:9pt,y:3pt), stroke:1pt,baseline: 20%)[#kuran_count.display(katanumb)]
+  }
+  else {
+    box(inset:(x:9pt,y:3pt), stroke:1pt,baseline: 20%)[#numbering(katanumb,n)]
+    }
+  
+}
+
