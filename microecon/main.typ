@@ -16,6 +16,7 @@
 
 多鹿 智哉 \@ 日本大学 経済学部
 ]
+//問題の具体的なsourceはquiz_bank.typを参照すること
 
 = 意思決定と市場均衡
 #tests_gen(Quiz,style:"Q", numbering-style: "number", subgroups:("Q11", "Q3"), categories:("Term1",), mode:"cat", question-style: test-question-style, answer-style: test-answer-style)
