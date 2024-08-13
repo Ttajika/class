@@ -48,7 +48,7 @@ show figure: it => {
 
 #let test-question-style(name:"問題",　question:[], answer:[], commentary:[], point:[], tag:[], id:[], hide-id:false, ) = {
   show figure: it => {
-    [#text(size:1.1em)[#strong[#name #tag.]] #it.body \ ]
+    [#text(size:1.1em)[#strong[#ref(label(id)).]] #it.body \ ]
   }
   [#figure(kind:"question",supplement: name)[#question]
 #label(id)]
@@ -59,7 +59,7 @@ hide[#text(size:3em)[#answer]\ ]
 
 #let test-question-style-no-space(name:"問題",　question:[], answer:[], commentary:[], point:[], tag:[], id:[], hide-id:false, ) = {
   show figure: it => {
-    [#text(size:1.1em)[#strong[#name #tag.]] #it.body \ ]
+    [#text(size:1.1em)[#strong[#name #tag. ]] #it.body \ ]
   }
   [#figure(kind:"question",supplement: name)[#question]
 #label(id)]
@@ -68,7 +68,7 @@ hide[#text(size:3em)[#answer]\ ]
 
 #let test-answer-style(name:"問題",　question:[],answer:[], commentary:[], tag:[],id:[], hide-id:false, ) ={
 show figure: it => {
-    [#text(size:1.1em)[#strong[#name #tag.]] #h(1em) #it.body  ]
+    [#text(size:1.1em)[#strong[#name #tag. ]] #h(1em) #it.body  ]
   }
 [#figure(kind:"question",supplement: name)[#question \ ]
 #label(id)]
