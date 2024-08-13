@@ -1,18 +1,18 @@
 #import "quiz_bank.typ":*
-#show heading: set text(font: "Harano Aji Gothic", fill:eastern.darken(30%))
+#show heading: set text(font: "Harano Aji Gothic", fill: gradient.linear(..color.map.crest))
 #set heading(numbering: "1.")
 #set page(numbering: "1")
 #set text(font: "Harano Aji Mincho", lang:"ja")
 #set par(leading: 1em, first-line-indent: 1em)
 #show math.equation: set text(font: "TeX Gyre Pagella Math")
 
-#show strong: set text(fill:maroon)
+#show strong: set text(fill:maroon.darken(30%))
 #show strong: set text(font: "Harano Aji Gothic") 
 #let kuran_count = counter("kuran_counter")
 
 
 //問題自体は[quiz_bank.typ]に格納する．
-#align(center)[ #text(size:18pt,font: "Harano Aji Gothic", weight: "bold", fill:eastern.darken(30%))[基礎ミクロ経済学 問題集]\
+#align(center)[ #text(size:18pt,font: "Harano Aji Gothic", weight: "bold", fill: gradient.linear(..color.map.crest))[基礎ミクロ経済学 問題集]\
 
 多鹿 智哉 \@ 日本大学 経済学部
 ]
