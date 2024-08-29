@@ -175,7 +175,7 @@ header_slide(now:counter("slide_counter").display(),color:default_color,tcolor:e
   // Main body. 基本設定.
 
 //listのマーカーの設定
- set list(marker: ([#text(fill:default_color.darken(20%))[#fa-angle-right()]], text(fill:default_color, size:15pt)[#fa-angles-right()]))
+ set list(marker: ([#text(fill:default_color.darken(20%))[#fa-angle-right()]], text(fill:default_color, size:0.8em)[#fa-angles-right()],[#text(fill:default_color, size:0.8em)[#fa-caret-right()]]))
 
 // footnoteの設定
   set footnote(numbering: "1")
@@ -183,11 +183,11 @@ header_slide(now:counter("slide_counter").display(),color:default_color,tcolor:e
 // paragraphの設定． indent 1em, 行送り.5em
   set par(justify: false, first-line-indent: 1em, leading: .5em)
 // fontの設定
-  set text(font: sans-font, size:size, weight:400)
+  set text(font: sans-font, size:size, weight:300)
   show emph: set text(font: sans-font, fill: default_color.darken(24%), weight:600)
   show strong: set text(font: sans-font, fill: default_color.darken(14%), weight:500)
 //数式フォントの設定
-  show math.equation: set text(font: ("TeX Gyre Termes Math","M PLUS 2"),weight:400, size:size * 1.05)
+  show math.equation: set text(font: ("TeX Gyre Termes Math",),weight:300, size:1.2em)
 //set math.equation(numbering: "(1)")
 //items with numberingの設定
   set enum(numbering: "1.a.")
