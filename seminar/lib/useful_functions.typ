@@ -117,7 +117,7 @@ else {return num}}
   thm-type, name, number, body
 ) = {
 
- block(width:100%, breakable: true, above:1em, below:1em)[
+ block(width:100%, breakable: true, above:0em, below:0em)[
   #strong(thm-type)
   #if number != none {
     strong(number)
@@ -134,7 +134,7 @@ indent()
 #let my_defi_style(
   thm-type, name, number, body
 ) = {
-  block(width:100%, breakable: true,  above:2.0em, below:2.0em)[
+  block(width:100%, breakable: true,  above:0em, below:0em)[
   #strong(thm-type) 
   #if number != none {
     strong(number) 
@@ -177,22 +177,26 @@ indent()
   else {return str}
 }
 
-#let theorem_create(tlabel) = {
-    return{theorem_base(my_thm_style, tlabel, tlabel)
+#let theorem_create(tlabel, supple:none) = {
+    if supple == none{
+    return{theorem_base(my_thm_style, tlabel, tlabel)}
+    } else {
+    return{theorem_base(my_thm_style, tlabel, supple)}
     }
+    
   }
 
-#let theorem = theorem_create("Theorem")
-#let prop = theorem_create("Proposition")
-#let lemma = theorem_create("Lemma")
-#let rem = theorem_create("Remark")
+#let theorem = theorem_create("Theorem", supple: "定理")
+#let prop = theorem_create("Proposition", supple: "命題")
+#let lemma = theorem_create("Lemma", supple: "補題")
+#let rem = theorem_create("Remark", supple: "注意")
 #let cor = theorem_create("Corollary")
 #let claim = theorem_create("Claim")
 #let fact = theorem_create("Fact")
 #let defi = theorem_create("Definition")
 #let assump = theorem_create("Assumption")
 #let ex = theorem_create("Example")
-#let proof = theorem_create("Proof")
+#let proof = theorem_create("Proof", supple: "系")
 
 
 

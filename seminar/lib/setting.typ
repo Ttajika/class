@@ -1,4 +1,5 @@
 #import "useful_functions.typ": *
+#import "useful_package.typ": *
 #let par_block(it,font, leading:0.5em) =   { if it.block == true{
    return par(leading:leading)[#text(font: font)[#it]]//; set par(leading:.5em)}
   }else{return text(font: font)[#it]}}
@@ -29,6 +30,8 @@
   // Set body font family.
   set text(font: body-font, lang:lang)
   show heading: set text(font: sans-font)
+  show figure.where(kind:image): set figure(supplement: "図")
+  show figure.where(kind:table): set figure(supplement: "表")
   show par: it => {
     v(0.1em)
     it
@@ -132,11 +135,6 @@
   let name = cap_body(it.caption)
   my_defi_style(trans.at(lang).at(it.kind), name, thenumber, it.body)
   }
-  // else if it.supplement.text in others_list {
-  // align(center)[
-  // #it.body
-  // #trans.at(lang).at(it.supplement.text) #thenumber: #cap_body(it.caption)]
-  // }
   else if it.kind == "Proof" {
     let name = cap_body(it.caption)
     my_proof_style(trans.at(lang).at(it.kind), name, it.numbering, it.body,lang)}
