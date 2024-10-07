@@ -12,6 +12,17 @@
 
 #show link: set text(fill: eastern.darken(30%))
 
+#show: codly-init.with()
+
+#codly(
+  languages: (
+    R: (
+      name: "R",
+      color: rgb("#CE412B")
+    ),
+  )
+)
+
 //問題自体は[quiz_bank.typ]に格納する．
 #align(center)[ #text(size:18pt,font: "Harano Aji Gothic", weight: "bold", fill: gradient.linear(..color.map.crest))[専門研究（一）課題]\
 
@@ -22,7 +33,13 @@
 //問題の具体的なsourceはquiz_bank.typを参照すること
 
 
-　 \
-#tests_gen(Quiz,style:"Q", numbering-style: "number", subgroups:("Q11", "Q3"),  question-style: test-question-style, answer-style: test-answer-style)
+= 問題
+#tests_gen(Quiz,style:"Q", numbering-style: "number", subgroups:("Q11", "Q3"),  question-style: test-question-style-no-space, answer-style: test-answer-style)
 
 
+
+
+= ヒント
+
+#tests_gen(Quiz,style:"Q", numbering-style: "number", subgroups:("Q11", "Q3"),  question-style: commentary_pick)
+ 

@@ -63,7 +63,17 @@ hide[#text(size:3em)[#answer]\ ]
   }
   [#figure(kind:"question",supplement: name)[#question]
 #label(id)]
-//解答分のスペースを取る．  
+}
+
+
+#let commentary_pick(name:"問題",　question:[], answer:[], commentary:[], point:[], tag:[], id:[], hide-id:false, ) = {
+ if commentary != []{
+   show figure: it => {
+    [#text(size:1.1em)[#strong[#name #tag. ]] #it.body  \ ]
+  }
+  [#figure(kind:"question",supplement: name)[#commentary]
+#label(id)]
+}
 }
 
 #let test-answer-style(name:"問題",　question:[],answer:[], commentary:[], tag:[],id:[], hide-id:false, ) ={
