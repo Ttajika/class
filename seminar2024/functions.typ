@@ -48,7 +48,7 @@ show figure: it => {
 
 #let test-question-style(name:"問題",　question:[], answer:[], commentary:[], point:[], tag:[], id:[], hide-id:false, ) = {
   show figure: it => {
-    [#text(size:1.1em)[#strong[#ref(label(id)).]] #it.body \ ]
+    align(left)[#text(size:1.1em)[#strong[#ref(label(id)).]] #it.body \ ]
   }
   [#figure(kind:"question",supplement: name)[#question]
 #label(id)]
@@ -59,7 +59,11 @@ hide[#text(size:3em)[#answer]\ ]
 
 #let test-question-style-no-space(name:"問題",　question:[], answer:[], commentary:[], point:[], tag:[], id:[], hide-id:false, ) = {
   show figure: it => {
-    [#text(size:1.1em)[#strong[#name #tag. ]] #it.body \ ]
+
+    align(left)[
+   #v(-1em) 
+    \ #strong[#name #tag (#point\pt). ] #it.body  
+  ]
   }
   [#figure(kind:"question",supplement: name)[#question]
 #label(id)]
@@ -69,7 +73,8 @@ hide[#text(size:3em)[#answer]\ ]
 #let commentary_pick(name:"問題",　question:[], answer:[], commentary:[], point:[], tag:[], id:[], hide-id:false, ) = {
  if commentary != []{
    show figure: it => {
-    [#text(size:1.1em)[#strong[#name #tag. ]] #it.body  \ ]
+    v(-1em)
+    align(left)[\ #strong[#name #tag. ] #it.body  \ ] 
   }
   [#figure(kind:"question",supplement: name)[#commentary]
 #label(id)]
@@ -77,7 +82,7 @@ hide[#text(size:3em)[#answer]\ ]
 }
 
 #let test-answer-style(name:"問題",　question:[],answer:[], commentary:[], tag:[],id:[], hide-id:false, ) ={
-show figure: it => {
+show figure: it => {align(left)
     [#text(size:1.1em)[#strong[#name #tag. ]] #h(1em) #it.body  ]
   }
 [#figure(kind:"question",supplement: name)[#question \ ]

@@ -6,6 +6,8 @@
 #set par(leading: 1em, first-line-indent: 1em)
 #show math.equation: set text(font: "TeX Gyre Pagella Math")
 
+#set par(linebreaks: "optimized")
+
 #show strong: set text(fill:maroon.darken(30%))
 #show strong: set text(font: "Harano Aji Gothic") 
 #let kuran_count = counter("kuran_counter")
@@ -24,7 +26,7 @@
 )
 
 //問題自体は[quiz_bank.typ]に格納する．
-#align(center)[ #text(size:18pt,font: "Harano Aji Gothic", weight: "bold", fill: gradient.linear(..color.map.crest))[専門研究（一）課題]\
+#align(center)[ #text(size:18pt,font: "Harano Aji Gothic", weight: "bold", fill: gradient.linear(..color.map.crest))[ゲーム理論・練習問題集]\
 
 多鹿 智哉 \@ 日本大学 経済学部
 
@@ -38,7 +40,7 @@
 
 
 
-
+#pagebreak()
 = ヒント
 
 #tests_gen(Quiz,style:"Q", numbering-style: "number", subgroups:("Q11", "Q3"),  question-style: commentary_pick)

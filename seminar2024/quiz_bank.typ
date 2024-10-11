@@ -37,26 +37,29 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     各プレイヤーが，５つの戦略を持つゲームを書きなさい．
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:3, show-answer:true, category:"Term1"),
    quiz("Q2", question:[
     ３人のプレイヤーがいるゲームの利得表を書きなさい．
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:3, show-answer:true, category:"Term1"),
   quiz("Q3", question:[
     次のゲームの弱支配戦略・強支配戦略を見つけなさい．
+    
     + #Ngame(("A","B"), 
     (("U","D"),("L","R")), 
     (([1,3],[2,6]),
     ([3,2],[2,3])
     )
     )
+    
     + #Ngame(("A","B"), 
     (("U","D"),("L","R")), 
     (([3,6],[2,6]),
     ([3,4],[2,4])
     )
     )
+    
     + #Ngame(("A","B"), 
     (("U","M", "D"),("L","C","R")), 
     (([1,3],[2,6],[2,3]),
@@ -67,16 +70,18 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:5, show-answer:true, category:"Term1"),
   quiz("Q4", question:[
     次のゲームの支配される戦略の逐次的消去によって残る戦略の組をすべてみつけなさい．
+  
     + #Ngame(("A","B"), 
     (("U","D"),("L","R")), 
     (([1,3],[2,6]),
     ([3,2],[2,3])
     )
-    )
-    
+    ) 
+      
+
     + #Ngame(("A","B"), 
     (("U","M", "D"),("L","C","R")), 
     (([1,3],[2,6],[2,3]),
@@ -84,6 +89,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     ([2,1],[2,3],[3,2])
     )
     )
+    
     + #Ngame(("A","B"), 
     (("A1","A2", "A3", "A4", "A5", "A6"),("B1","B2","B3","B4","B5", "B6","B7")), 
     (([5,3],[2,3],[2,6],[3,5],[2,6],[1,1],[2,2]),
@@ -97,7 +103,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:5, show-answer:true, category:"Term1"),
   quiz("Q5", question:[
     次のゲームの純粋戦略ナッシュ均衡の組をすべてみつけなさい．
     + #Ngame(("A","B"), 
@@ -132,7 +138,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:5, show-answer:true, category:"Term1"),
   quiz("Q6", question:[
     N人鹿狩りゲームの変形版として，次のゲームを考える．
     - 参加者が$k$人以上であれば, 参加者は 利得$10$を得る．不参加者は利得$0$を得る．
@@ -144,7 +150,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
   ], commentary:[
     参加者が$ell$人のとき，次の2点を確かめる．(1) 参加していないプレイヤーが参加したがるか (2) 参加しているプレイヤーが参加したがらないか
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:8, show-answer:true, category:"Term1"),
 
   quiz("Q7", question:[
     N人鹿狩りゲームの変形版として，次のゲームを考える．
@@ -156,7 +162,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
   ], commentary:[
     参加者が$ell$人のとき，次の2点を確かめる．(1) 参加していないプレイヤーが参加したがるか (2) 参加しているプレイヤーが参加したがらないか
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:8, show-answer:true, category:"Term1"),
   quiz("Q7.5", question:[
     ２プレイヤー $times$ 2戦略のゲームを Rgamer を用いて100個作成し，純粋戦略ナッシュ均衡の存在する割合を計算しなさい．ただし，利得はランダムにすること．
   ], commentary:[ 
@@ -240,7 +246,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     ([3,2],[4,4])))
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:7, show-answer:true, category:"Term1"),
   quiz("Q9", question:[
      次のゲームの混合戦略ナッシュ均衡を求めなさい．
      
@@ -252,7 +258,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     ただし，$a>b$, $c>d$, $e>f$, $g>h$ であるとする．
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:9, show-answer:true, category:"Term1"),
 
   quiz("Q11", question:[
      次のゲームは査察ゲームという．
@@ -270,6 +276,18 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     
   ], point:10, show-answer:true, category:"Term1"),
 
+  quiz("Q9.5", question:[
+     次のゲームの混合戦略ナッシュ均衡をすべて求めなさい．
+     
+       #Ngame(("A","B"), 
+    (("U","D"),("L","M","R")), 
+    (([$1,3$],[$0,2$],[$1,1$]),
+    ([$0,1$],[$1,2$],[0,3])))
+    
+  ], answer:[
+    
+  ], point:15, show-answer:true, category:"Term1"),
+  
   quiz("Q10", question:[
     次のゲームを考える．
     - 参加者が$k$人以上であれば, 参加者は利得$10$を得る．不参加者は利得$20$を得る．
@@ -283,7 +301,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
      
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:12, show-answer:true, category:"Term1"),
   quiz("Q12", question:[
     クールノー競争を考える．逆需要曲線が $P(x)=100-x$ であるとし，企業1の費用が$10$, 企業2の費用が $c$ であるとする．
     + $c=10$のときのナッシュ均衡を求めなさい.
@@ -292,7 +310,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
      
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:8, show-answer:true, category:"Term1"),
   quiz("Q13", question:[
     次のゲームは差別化ベルトラン競争と呼ばれるものの一種である．
   $
@@ -305,14 +323,14 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
      
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"), 
+  ], point:8, show-answer:true, category:"Term1"), 
   quiz("Q14", question:[
     後出しジャンケンのゲームの木を描きなさい
     
      
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"), 
+  ], point:6, show-answer:true, category:"Term1"), 
     quiz("Q14.1", question:[
     二目並べのゲームの木を描きなさい．ただし，以下のマスの上で行われるとする．
      #align(center)[
@@ -330,7 +348,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
      
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:6, show-answer:true, category:"Term1"),
    quiz("Q15", question:[
     次のゲームの木で表されるゲーム（*ムカデゲーム*）のバックワードインダクションによる解を求めなさい．
     #align(center)[
@@ -361,7 +379,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
      
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:8, show-answer:true, category:"Term1"),
   
   quiz("Q16", question:[
     2人鹿狩りゲームの変形版として，次のゲームを考える．
@@ -371,7 +389,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
      プレイヤー１，プレイヤー２の順番に寄付額を決定する場合のバックワードインダクションの解をひとつ求めなさい．ただし，各プレイヤーは無差別であれば寄付することを選ぶとする．
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:12, show-answer:true, category:"Term1"),
     quiz("Q17", question:[
     @Q16 のゲームを考える．
 
@@ -381,7 +399,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     ただし，各プレイヤーは無差別であれば寄付することを選ぶとする．
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:14, show-answer:true, category:"Term1"),
     quiz("Q18", question:[
       @Q16 のゲームを考える．
       
@@ -389,7 +407,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     ただし，各プレイヤーは無差別であれば寄付することを選ぶとする．
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:14, show-answer:true, category:"Term1"),
   quiz("Q19", question:[
       自分の利得が $x$, 相手の利得が $y$ のとき，主観的な利得 $pi(x,y)$ が次のように定義されるとする．
       $
@@ -398,9 +416,20 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
       これをシャーデンフロイデのモデルと呼ぶ．$alpha$の値を適当に設定し，最後通牒ゲームを分析しなさい．その上で，不平等回避のモデルでの結果とどのような違いがあるか答えなさい．
   ], answer:[
     
-  ], point:10, show-answer:true, category:"Term1"),
+  ], point:8, show-answer:true, category:"Term1"),
 
-   quiz("Q15.1", question:[
+   
+  
+  quiz("Q20", question:[
+    提案者が利得10の分前を提案し，応答者は何をしようと提案者が提案する通りに利得が実現する．このゲームを*独裁者ゲーム*と呼ぶ．
+    
+      @Q19 のシャーデンフロイデのモデルと不平等回避のモデルで独裁者ゲームの結果にどのような違いが起きるか，答えなさい．
+     
+  ], answer:[
+    
+  ], point:10, show-answer:true, category:"Term1"), 
+
+  quiz("Q15.1", question:[
     （記憶力のないプレイヤーたちによるムカデゲーム）次のゲームの木で表されるゲームの純粋戦略サブゲーム完全均衡をすべて求めなさい．ただし，同じ曲線で囲まれたノードは同じ情報集合に属するとする．
     #align(center)[
     #cetz.canvas({
@@ -438,21 +467,12 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
      
   ], commentary:[同じ情報集合に含まれるノードでは同じ行動をする事に注意をする．情報集合がいくつあるかを考える．
     
-  ], point:10, show-answer:true, category:"Term1"),
-  
-  quiz("Q20", question:[
-    提案者が利得10の分前を提案し，応答者は何をしようと提案者が提案する通りに利得が実現する．このゲームを*独裁者ゲーム*と呼ぶ．
-    
-      @Q19 のシャーデンフロイデのモデルと不平等回避のモデルで独裁者ゲームの結果にどのような違いが起きるか，答えなさい．
-     
-  ], answer:[
-    
-  ], point:10, show-answer:true, category:"Term1"), 
+  ], point:12, show-answer:true, category:"Term1"),
   quiz("QM", question:[以下のCSVファイルをダウンロードし，ボストン方式とDAアルゴリズムによるマッチング結果をそれぞれ出力しなさい. \
   - #link("https://www.dropbox.com/scl/fi/kh8s2k4wkdnb29865e61c/Male_pref.csv?rlkey=wbotpzz46yvo5cjxg9bnxug5r&st=84hzjkyb&dl=0")[男性の選好の名簿]
 
   - #link("https://www.dropbox.com/scl/fi/68y9v7hqxvppyovyhfo4p/Female_pref.csv?rlkey=hscpy8yie2iuqqvfwujlivi0c&st=6ezzhg2c&dl=0")[女性の選好の名簿]
-], ),
+], point: 8),
   quiz("Q21", question:[
       人と物のマッチングモデルを考える．つまり，人にものを一つづつ割り当てることを考える．
 
