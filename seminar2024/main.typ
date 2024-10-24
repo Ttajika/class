@@ -3,7 +3,7 @@
 #set heading(numbering: "1.")
 #set page(numbering: "1")
 #set text(font: "Harano Aji Mincho", lang:"ja")
-#show raw: set text(font: ("Fira Mono", "Harano Aji Gothic"), lang: "ja")
+#show raw: set text(font: ("Roboto Mono", "Harano Aji Gothic"), lang: "ja")
 
 #set par(leading: 1em, first-line-indent: 1em)
 #show math.equation: set text(font: "TeX Gyre Pagella Math")
@@ -46,6 +46,11 @@
 
 #pagebreak()
 = ヒント
+
+コードを読む時の注意:
+- `l`は小文字のエル，`I`は大文字のアイ, `1`は数字の１
+- `0`は数字のゼロ, `o`はアルファベット小文字のオー，`O`は大文字オー
+
 
 #tests_gen(Quiz,style:"Q", numbering-style: "number", subgroups:("Q11", "Q3"),  question-style: commentary_pick)
  

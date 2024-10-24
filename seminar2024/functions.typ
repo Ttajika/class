@@ -74,7 +74,7 @@ hide[#text(size:3em)[#answer]\ ]
  if commentary != []{
    show figure: it => {
     v(-1em)
-    align(left)[\ #strong[#name #tag. ] #it.body  \ ] 
+    align(left)[\ #strong[#name #tag. ] #it.body   ] 
   }
   [#figure(kind:"question",supplement: name)[#commentary]
 #label(id)]
