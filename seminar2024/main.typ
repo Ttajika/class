@@ -3,10 +3,13 @@
 #set heading(numbering: "1.")
 #set page(numbering: "1")
 #set text(font: "Harano Aji Mincho", lang:"ja")
+#show raw: set text(font: ("Fira Mono", "Harano Aji Gothic"), lang: "ja")
+
 #set par(leading: 1em, first-line-indent: 1em)
 #show math.equation: set text(font: "TeX Gyre Pagella Math")
 
 #set par(linebreaks: "optimized")
+#show enum: set block(breakable: true)
 
 #show strong: set text(fill:maroon.darken(30%))
 #show strong: set text(font: "Harano Aji Gothic") 
@@ -19,8 +22,9 @@
 #codly(
   languages: (
     R: (
-      name: "R",
-      color: rgb("#CE412B")
+      name: "",
+      icon: box(image("img/R_logo.svg",width:9pt, height:7pt)),
+      color: white
     ),
   )
 )

@@ -3,17 +3,12 @@
 #import "@preview/codly:1.0.0": *
 
   
-#set text(font: "Harano Aji Mincho")
-#show strong: set text(font: "Harano Aji Gothic") 
-
+#set text(font: "Harano Aji Mincho",lang:"jp")
+#show strong: set text(font: "Harano Aji Gothic", lang:"jp") 
+#show raw: set text(font:"Harano Aji Gothic")
 //see https://typst.app/docs/reference/foundations/calc
 
-#let Q2-price1 = 120
-#let Q2-price2 = 100
-#let Q2-dem1 = 3020
-#let Q2-dem2 = 5240
 
-#let cat_list =("Term1",)
 
 
 
@@ -33,16 +28,16 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
 - point: 配点． 整数を入力する. 合計点を計算するシステムは未実装．
 
 #let Quiz = Quiz_create(
-  quiz("Q1", question:[
-    各プレイヤーが，５つの戦略を持つゲームを書きなさい．
-  ], answer:[
+  // quiz("Q1", question:[
+  //   各プレイヤーが，５つの戦略を持つゲームを書きなさい．
+  // ], answer:[
     
-  ], point:3, show-answer:true, category:"Term1"),
-   quiz("Q2", question:[
-    ３人のプレイヤーがいるゲームの利得表を書きなさい．
-  ], answer:[
+  // ], point:3, show-answer:true, category:"Term1"),
+  //  quiz("Q2", question:[
+  //   ３人のプレイヤーがいるゲームの利得表を書きなさい．
+  // ], answer:[
     
-  ], point:3, show-answer:true, category:"Term1"),
+  // ], point:3, show-answer:true, category:"Term1"),
   quiz("Q3", question:[
     次のゲームの弱支配戦略・強支配戦略を見つけなさい．
     
@@ -139,6 +134,11 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
   ], answer:[
     
   ], point:5, show-answer:true, category:"Term1"),
+  quiz("Q5.5", question:[
+   @Q5 で求めたナッシュ均衡がパレート効率的かどうかそれぞれ調べなさい．
+    
+  ], point:6, show-answer:true, category:"Term1"),
+  
   quiz("Q6", question:[
     N人鹿狩りゲームの変形版として，次のゲームを考える．
     - 参加者が$k$人以上であれば, 参加者は 利得$10$を得る．不参加者は利得$0$を得る．
@@ -163,12 +163,14 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     参加者が$ell$人のとき，次の2点を確かめる．(1) 参加していないプレイヤーが参加したがるか (2) 参加しているプレイヤーが参加したがらないか
     
   ], point:8, show-answer:true, category:"Term1"),
+  quiz("Q7.4", question:[
+    ２プレイヤー・2戦略のゲームを Rgamer を用いて1000個作成し，強支配戦略均衡の存在する割合を計算しなさい．ただし，利得はランダムにすること．]),
   quiz("Q7.5", question:[
-    ２プレイヤー $times$ 2戦略のゲームを Rgamer を用いて100個作成し，純粋戦略ナッシュ均衡の存在する割合を計算しなさい．ただし，利得はランダムにすること．
+    ２プレイヤー・2戦略のゲームを Rgamer を用いて1000個作成し，純粋戦略ナッシュ均衡の存在する割合を計算しなさい．ただし，利得はランダムにすること．
   ], commentary:[ 
-  - ループを使う．例えば次のようにすると，1から100まで, {}の中身を繰り返す．{}の中身にゲームを生成し，ナッシュ均衡を求めるコードを入れる．
+  - ループを使う．例えば次のようにすると，1から1000まで, {}の中身を繰り返す．{}の中身にゲームを生成し，ナッシュ均衡を求めるコードを入れる．
     ```R
-    N <- 100
+    N <- 1000 #Nは繰り返しの数である．
     for (i in 1:N){
       ...
       game <- ...
@@ -193,13 +195,13 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     
   ], point:10, show-answer:true, category:"Term1"),
    quiz("Q7.8", question:[
-    ２プレイヤー $times$ 2戦略のゲームを Rgamer を用いて100個作成し，パレート効率的な純粋戦略ナッシュ均衡が存在する割合を計算しなさい．
+    ２プレイヤー・2戦略のゲームを Rgamer を用いて1000個作成し，パレート効率的な純粋戦略ナッシュ均衡が存在する割合を計算しなさい．
     ただし，利得はランダムにすること．
   ], commentary:[
-    パレート最適かどうかをチェックするには以下の関数を定義する.
+    パレート最適かどうかをチェックするには以下の関数を定義する.このコードでは，与えられたナッシュ均衡がパレート効率的であればTRUEを，そうでなければFALSEを出力する関数(`isPareto`)を作成している．
     ```R
     isPareto <- function(game, NE) {
-        m <- length(game$df$s1)
+        m <- length(game$df$s1) #mは戦略の組み合わせの総数
         Num <- NULL
         
         # NEのインデックスを探す
@@ -207,7 +209,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
           g <- paste0("[", game$df[i, 3], ", ", game$df[i, 4], "]")
           if (g == NE) {
             Num <- i
-            break
+            break #breakはループを打ち切る命令
           }
         }
         
@@ -219,19 +221,20 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
         NEpayoff <- c(game$df$payoff1[Num], game$df$payoff2[Num])
         
         # パレート最適性のチェック
+        # jは戦略組の番号
         for (j in 1:m) {
-          cond1 <- all(game$df$payoff1[j] >= NEpayoff[1], game$df$payoff2[j] >= NEpayoff[2])
+          cond1 <- all(game$df$payoff1[j] >= NEpayoff[1], game$df$payoff2[j] >= NEpayoff[2])　
           cond2 <- any(game$df$payoff1[j] > NEpayoff[1], game$df$payoff2[j] > NEpayoff[2])
           
           # 両方の条件が満たされた場合
           if (cond1 && cond2) {
             print("is Not Pareto")
-            return(0)
-            break
+            return(TRUE)
+            break   #breakはループを打ち切る命令
           }
         }
         print("is Pareto")
-        return(1)
+        return(FALSE)
       }
     ```
     
@@ -292,16 +295,18 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     次のゲームを考える．
     - 参加者が$k$人以上であれば, 参加者は利得$10$を得る．不参加者は利得$20$を得る．
     - 参加者が$k$人より少なければ，参加者も不参加者も利得は0である．
+    - 人の数は$n$である．
 
     このゲームの混合戦略ナッシュ均衡を考えるために次に答えなさい．
-
+    + 参加者が $k-2$人以下であることが予想されるとき，ある一人が参加することで利益が増えるかどうか答えなさい．
+    + 参加者が $k$人以上であることが予想されるとき，ある一人が参加することで利益が増えるかどうか答えなさい．
     + ある一人が参加する確率が$q$であるとき，参加者が $k-1$人である確率を求めなさい．
     + ある一人が参加する確率が$q$であるとき，参加することと参加しないことが無差別になるような$q$の値を求めなさい．
     + 混合戦略ナッシュ均衡における，一人が参加する確率$q$を求めなさい．
      
   ], answer:[
     
-  ], point:12, show-answer:true, category:"Term1"),
+  ], point:9, show-answer:true, category:"Term1", commentary:[$n$ 人中 $k$ 人が参加する確率は $attach(C,bl:n,br:k)  = (n!)/((n-k)!k!)$である．]),
   quiz("Q12", question:[
     クールノー競争を考える．逆需要曲線が $P(x)=100-x$ であるとし，企業1の費用が$10$, 企業2の費用が $c$ であるとする．
     + $c=10$のときのナッシュ均衡を求めなさい.
@@ -318,7 +323,7 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
   pi_2(p_1,p_2)= (D+1/2 p_1- p_2)times (p_2-c_2)
   $
   + $D, c_1,c_2$に適当な数値を代入し，このゲームのナッシュ均衡を求めなさい.
-  + $D$の値が増えたとき，ナッシュ均衡はどう変化するか答えなさい．$c_1,c_2$についてもそれぞれ答えなさい．
+  + $D$の値が増えたとき，ナッシュ均衡はどう変化するか答えなさい．$c_1,c_2$がそれぞれ増えたときについてもそれぞれ答えなさい．
     
      
   ], answer:[
@@ -336,19 +341,40 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
      #align(center)[
     #cetz.canvas({
     import cetz.draw: *
-    rect((0,0),(4,4))
     rect((0,0),(2,2))
-    rect((2,2),(2,4))
-    rect((2,4),(4,2))
-    content((1,1),[a])
-    content((1,3),[b])
-    content((3,1),[d])
-    content((3,3),[c])
+    rect((0,0),(1,1))
+    rect((1,1),(1,2))
+    rect((1,2),(2,1))
+    content((.5,.5),[a])
+    content((.5,1.5),[b])
+    content((1.5,.5),[d])
+    content((1.5,1.5),[c])
       })]
      
   ], answer:[
     
   ], point:6, show-answer:true, category:"Term1"),
+   quiz("Q14.2", question:[
+    三目並べのゲームの木を答えなさい．ただし，以下のマスの上で行われるとする．
+     #align(center)[
+    #cetz.canvas({
+    import cetz.draw: *
+    rect((0,0),(3,3))
+    for j in (0,1,2) {
+    for i in (0,1,2){
+    rect((0+j,0+i),(1+j,1+i))
+    content((0.5+j,0.5+i),[#numbering("a",i+3*j+1)])
+    }
+    }
+    
+    
+ 
+    
+      })]
+     
+  ], answer:[
+    
+  ], point:12, show-answer:true, category:"Term1"),
    quiz("Q15", question:[
     次のゲームの木で表されるゲーム（*ムカデゲーム*）のバックワードインダクションによる解を求めなさい．
     #align(center)[
@@ -467,18 +493,34 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
      
   ], commentary:[同じ情報集合に含まれるノードでは同じ行動をする事に注意をする．情報集合がいくつあるかを考える．
     
-  ], point:12, show-answer:true, category:"Term1"),
-  quiz("QM", question:[以下のCSVファイルをダウンロードし，ボストン方式とDAアルゴリズムによるマッチング結果をそれぞれ出力しなさい. \
+  ], point:9, show-answer:true, category:"Term1"),
+  
+  quiz("QM", question:[以下のCSVファイルをダウンロードし，ボストン方式とDA方式によるマッチング結果をそれぞれ出力しなさい. \
   - #link("https://www.dropbox.com/scl/fi/kh8s2k4wkdnb29865e61c/Male_pref.csv?rlkey=wbotpzz46yvo5cjxg9bnxug5r&st=84hzjkyb&dl=0")[男性の選好の名簿]
 
   - #link("https://www.dropbox.com/scl/fi/68y9v7hqxvppyovyhfo4p/Female_pref.csv?rlkey=hscpy8yie2iuqqvfwujlivi0c&st=6ezzhg2c&dl=0")[女性の選好の名簿]
 ], point: 8),
+quiz("QM2", question:[次の選好をもつ人々を考える.
+
+/ M1: W1 W2
+/ M2: W2 W1
+
+/ W1: M2 M1
+/ W2: M1 M2
+
++ 男性側提案DA方式によるマッチングを求めなさい
++ 1で求めたマッチングについて，W2が M1 という選好を提示する（つまりM2は受け入れ不能と詐称する）ときの男性側提案DA方式によるマッチングを計算することで，男性側提案DA方式が女性にとって耐戦略的でないことを示しなさい．
++ 女性側提案DA方式によるマッチングを求めなさい
++ 1で求めたマッチングについて，女性側提案DA方式が男性にとって耐戦略的でないことを示しなさい．
+
+  
+],point:5),
   quiz("Q21", question:[
-      人と物のマッチングモデルを考える．つまり，人にものを一つづつ割り当てることを考える．
+      人とモノのマッチングモデルを考える．つまり，人にモノを一つづつ割り当てることを考える．
 
       次のようなアルゴリズムを*逐次独裁者アルゴリズム*と呼ぶ.
       + 人の優先順位を決める
-      + 最初に決めた順位の順に物をひとつ選んでいく．
+      + 最初に決めた順位の順に人がモノをひとつづつ選んでいく．
 
       このアルゴリズムが耐戦略的かつ効率的であることを説明しなさい．
   ], answer:[
@@ -489,12 +531,12 @@ Quiz_createで問題のリストを作成する． Quiz = Quiz_createとする�
     
   ], point:10, show-answer:true, category:"Term1"),
   quiz("Q22", question:[
-      人と物のマッチングモデルを考える．
+      人とモノのマッチングモデルを考える．
 
       次のようなアルゴリズムを*最良交換サイクルアルゴリズム*と呼ぶ.
-      + 人に適当にものを割り当てる
-      + 各個人は自分が最も欲しいものを持っている人を指差す
-      + 指さしのサイクルができれば，そのサイクルを使ってものを交換する．サイクルの外の人はそのまま自分に割り当てられた物をもつ
+      + 人に適当にモノを割り当てる
+      + 各個人は自分が最も欲しいモノを持っている人を指差す
+      + 指さしのサイクルができれば，そのサイクルを使ってモノを交換する．サイクルの外の人はそのまま自分に割り当てられたモノをもつ
       + サイクルで交換した人を除外し，残りの人たちで同じことを繰り返す．
 
       このアルゴリズムが耐戦略的であることを説明しなさい．

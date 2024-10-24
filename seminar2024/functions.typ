@@ -258,8 +258,8 @@ tests_gen(quizbank, subgroups: chosen_groups,  categories:(), style: style, numb
   box(table(columns: strategies.at(1).len()+2,
       align: center + horizon,
       stroke: (x,y) => (
-        top: if y ==2 {1pt} else {0pt},
-        left: if x==2 {1pt} else {0pt}
+        top: if y == 2 {1pt} else {0pt},
+        left: if x == 2 {1pt} else {0pt}
       ),
       [], table.cell(colspan: strategies.at(1).len()+1, players.at(1)),
           table.cell(rowspan: (strategies.at(0).len()+1), players.at(0)),
