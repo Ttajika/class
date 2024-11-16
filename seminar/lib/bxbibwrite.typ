@@ -131,6 +131,7 @@
         body: body,
       )),
     )
+    show figure: it => align(left,it)
     // Then output with the label.
     [#fig#label]
 
@@ -181,9 +182,8 @@
       let count = bib-counter.at(el.location()).at(0)
       let sup = it.supplement
       if sup == auto { sup = none }
-      format-key(el.numbering, count, el.supplement, sup) 
+      link(it.target)[#format-key(el.numbering, count, el.supplement, sup)] 
     }
-
     body
   }
 

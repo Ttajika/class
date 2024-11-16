@@ -32,18 +32,16 @@ else {return it}
 }
 
 #let aeq(tlabel, name:none, tag:false, body) ={
-        locate(loc =>{
-        let  eql = counter("tjk_auto-numbering-eq" + str(tlabel))
-        if eql.final(loc).at(0) == 1{
+        context[
+        #let  eql = counter("tjk_auto-numbering-eq" + str(tlabel))
+        #if eql.final().at(0) == 1{
           [#math.equation(numbering: tjk_numb_style(tag,tlabel,name),block: true)[#body]
          #label(str(tlabel))]
          if tag == true{counter(math.equation).update(i => i - 1)}
-          }
-        
-        else {
+          } else {
          [#math.equation(numbering:none,block: true)[#body] ]
         }
-      })
+      ]
 }
 
 
@@ -55,7 +53,7 @@ else {return it}
   let lbl = it.target
   let eq = math.equation
   let el = it.element
-  let eql = counter("tjk_auto-numbering-eq"+str(lbl))
+  let eql = counter("auto-numbering-eq"+str(lbl))
     eql.update(1)
     if el != none and el.func() == eq {
     link(lbl)[
@@ -116,8 +114,9 @@ else {return num}}
 #let my_thm_style(
   thm-type, name, number, body
 ) = {
-
- block(width:100%, breakable: true, above:0em, below:0em)[
+  context{
+    
+ align(left, block(width:100%, breakable: true, spacing: par.leading)[
   #strong(thm-type)
   #if number != none {
     strong(number)
@@ -125,23 +124,25 @@ else {return num}}
     " "+ [(#name).] + " "
   }
   #emph(body)
-] 
-indent()
-}
+])
+[#hide[dummy]]
+v(-1em)
+v(-par.leading)
+}}
 
 
 
 #let my_defi_style(
   thm-type, name, number, body
 ) = {
-  block(width:100%, breakable: true,  above:0em, below:0em)[
+  align(left, block(width:100%, breakable: true,  above:0em, below:0em)[
   #strong(thm-type) 
   #if number != none {
     strong(number) 
   }#if name == none {"."}
   #if name != none {[(#name).] 
   }
-  #body] 
+  #body]) 
   indent()
 }
 
@@ -150,13 +151,13 @@ indent()
 #let my_proof_style(
   thm-type, name, number, body, lang
 ) =  {
-  block(width:100%, breakable: true)[
+  align(left, block(width:100%, breakable: true)[
   #if name  == none {strong(trans.at(lang).at("Proof")) +"."}
   #if name != none {
   [#strong[#proofname(name,lang)]] 
   }
     #body  #h(1fr) #QERmark(lang)
-  ]
+  ])
 }
 
 
@@ -165,8 +166,9 @@ indent()
     content,
     caption: name,
     kind: kind,
-    supplement: supplement
-  ) }
+    supplement: supplement,
+  ) 
+  }
 }
 
 

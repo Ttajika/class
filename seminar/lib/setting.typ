@@ -30,6 +30,10 @@
   // Set body font family.
   set text(font: body-font, lang:lang)
   show heading: set text(font: sans-font)
+
+  
+ 
+  
   show figure.where(kind:image): set figure(supplement: "図")
   show figure.where(kind:table): set figure(supplement: "表")
   show par: it => {
@@ -37,7 +41,6 @@
     it
     v(0.1em)
   }
-  set heading(numbering: "1.1.", supplement: [Section])
   set footnote(numbering: "*")
   
   // Title row.
@@ -84,9 +87,19 @@
 ]
   counter(page).update(1)
   outline(title:"目次")
-  pagebreak()
-}
+ // pagebreak()
+  
+ 
 
+}
+  
+  set heading(numbering: "1.1")
+   show heading.where(level:1): it => {
+   if style == "dissertation" {colbreak()
+    if it.numbering != none {block[第#counter(heading).display()章 #it.body]}else {it}}
+    else {it}
+    //linebreak()
+  }
   // Main body. 基本設定.
   // paragraphの設定． indent 1em, 行送り1.2em
   set par(justify: true, first-line-indent: 1em, leading: leading)
@@ -95,6 +108,9 @@
   // fontの設定
   set text(font: body-font, size:font-size)
   set text(cjk-latin-spacing: auto)
+
+  //直書き引用文献書式の設定
+  show: use-bib-item-ref.with(numbering: "1")
 
   //数式フォントの設定
   show math.equation: it => {
@@ -107,6 +123,7 @@
 
   // footnoteの設定
   set footnote(numbering: "1")  
+  set figure(placement: auto)
   
   counter(footnote).update(0)
 
@@ -114,7 +131,31 @@
   show strong: set text(font: sans-font)
 
 
+  set math.equation(numbering: "(1)")
 
+ show math.equation.where(block: true): it => {
+  if it.has("label")  {
+      
+      let tlabel = it.at("label")
+     context{
+       
+        let  eql = counter("auto-numbering-eq" + str(tlabel))
+        if eql.final().at(0) == 1{
+           
+          block(it) 
+           
+          }
+        
+        else {
+          counter(math.equation).update(n => n - 1)
+          block($display(it.body)$,spacing: leading)
+        }
+      }
+    
+  }
+  else {counter(math.equation).update(n => n - 1)
+        block($display(it.body)$,spacing: leading)}
+}
   
   set enum(numbering: "1.a.")
   show ref: it => eq_refstyle(it,lang:lang)
