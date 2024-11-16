@@ -11,25 +11,31 @@
   ],),
   lang: "jp",
   date: Today(style:"ymd-jp"),
-  style: "report"//"dissertation"に変更すると卒論スタイルになる
+  style: "dissertation"//"report"だとレポートスタイルに，"dissertation"に変更すると卒論スタイルになる
+  ,seminar: "〇〇研究室"
 
 )
 
 
 
 
-= はじめに
+= はじめに<ax>
 
-== ああ
-#roremu(140)
+
+@ax
+@axx
+== ああ<axx>
+#roremu(140)A
 
 #roremu(140)
 
 == 箇条書き
 
+箇条書きとは #roremu(100,offset:400)
 #enum([あ
 ],[い],[う], numbering: "[a]")
 
+次の等式$x=2x$を考える．
 
 = 関連文献
 
@@ -42,7 +48,7 @@
 
 #theorem[すごい定理]<c>
 
-@c はすごい. #roremu(400,offset: 330)
+@c  #roremu(400,offset: 330)
 
 #roremu(400,offset: 730)
 
