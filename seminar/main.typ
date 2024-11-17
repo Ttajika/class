@@ -5,8 +5,8 @@
 #show: project.with(
   title: "タイトル",
   authors: ([
-#table(stroke:0pt,columns:2,[#waritsuke(4,"氏名")
-],[自分の名前を書く],[#waritsuke(4,"学籍番号")
+#table(stroke:0pt,columns:2,[#strong[#waritsuke(4,"氏名")]
+],[自分の名前を書く],[#strong[#waritsuke(4,"学籍番号")]
 ],[学籍番号を書く])
   ],),
   lang: "jp",
@@ -17,17 +17,17 @@
 )
 
 
-
+#show "。":"．" 
 
 = はじめに<ax>
 
 
 @ax
-@axx
+@axx #roremu(150)だ．
 == ああ<axx>
 #roremu(140)A
 
-#roremu(140)
+#roremu(140,offset:200)
 
 == 箇条書き
 
@@ -35,34 +35,35 @@
 #enum([あ
 ],[い],[う], numbering: "[a]")
 
-次の等式$x=2x$を考える．
+次の等式「$x=2x$」を考える．さにあらず「"和漢混植"AaaaBbb」
 
 = 関連文献
 
-#roremu(330)
+#roremu(330,offset:700)
+@a によると @b は😯 @axx 
 
-@a によると @b は😯
+
 = 本論/方法
 
-#roremu(330)
+#roremu(330,offset:900)
 
-#theorem[すごい定理]<c>
+#theorem[すごい定理#roremu(124, offset:1201)．]<c>
 
 @c  #roremu(400,offset: 330)
 
-#roremu(400,offset: 730)
+$
+ integral_0^1 e^(i pi) dif x=-1
+  $<e>
+  
+  @e 式はすごい式．$a^3+b^3=c^3+d^3$ #roremu(400,offset: 730) @d は日大のロゴ. 
 
 
 
 #figure(caption:"日大経済のロゴ")[#image("logo.svg")]<d>
  
-@d は日大のロゴ. 
 
-  $
-  e^(i pi)=-1
-  $<e>
+
   
-  @e 式はすごい式．$a^3+b^3=c^3+d^3$
 
 
 

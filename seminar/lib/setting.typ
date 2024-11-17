@@ -17,8 +17,8 @@
   sans-font: ("Libertinus Sans","Harano Aji Gothic"),
   math-font: ("Libertinus Math","Harano Aji Mincho"),
   leading: 1.0em,
-  lang: "en",
-  font-size: 14pt,
+  lang: "jp",
+  font-size: 12pt,
   style: "report",
   seminar: "",
   body,
@@ -36,11 +36,13 @@
 )
 
 
-  // Set body font family.
-  set text(font: body-font, lang:lang)
+  // Set body font family
+    // fontの設定
+  set text(font: body-font, size:font-size,lang:lang)
+  set text(cjk-latin-spacing: auto)
   show heading: set text(font: sans-font)
 
-  show regex("[\p{scx:Han}\p{scx:Hira}\p{scx:Kana}]"): set text(size: 0.84em)
+  show regex("[\p{scx:Han}\p{scx:Hira}\p{scx:Kana}]"): set text(size: 0.925em)
 
  
   show emph: set text(font: body-font)
@@ -83,7 +85,7 @@
   if style == "dissertation" {
   page(numbering: none)[
   #align(center+horizon)[
-    #text(font: sans-font, weight: 700, 2.75em)[#title]
+    #text(font: sans-font, weight: 700, 3em)[#title]
   ]
   #v(4cm)
   // Author information.
@@ -95,12 +97,12 @@
     grid(
       columns: (1fr,) * calc.min(3, authors.len()),
       gutter: 1em,
-      ..authors.map(author => align(center, [#text(size:1.2em)[#author]])),
+      ..authors.map(author => align(center, [#text(size:1.5em)[#author]])),
       ..institutions.map(institutions => align(center, strong(institutions)))
     ),
   )
-  #if seminar != ""{align(center+horizon)[#text(font: body-font, weight: 500, 1.2em)[#seminar]]}
-  #align(center+horizon)[#text(font: body-font, weight: 500, 1.2em)[提出日：#date]]
+  #if seminar != ""{align(center+horizon)[#text(font: body-font, weight: 500, 1.5em)[#seminar]]}
+  #align(center+horizon)[#text(font: body-font, weight: 500, 1.5em)[提出日：#date]]
  
 ]
  show heading: set text(size:1.5em)
@@ -127,20 +129,20 @@
   
    set heading(numbering: "1.1", supplement: [])
      show heading: it => {
-    v(-.5em)
+    //v(-.5em)
     it 
-    hide[あ]
-    v(-.5em)
+    par(text(size: 0pt, ""))
     v(-leading)
   }
    show heading.where(level:1): it => {
    if style == "dissertation" {colbreak()
     if it.numbering != none {block[#text(size:1.5em)[第#counter(heading).display()章 #it.body]]}else {text(size:1.5em)[#it]}}
     else {it}
-    hide[あ]
-    //v(-1em)
-    v(-leading)
+    par(text(size: 0pt, ""))
+    //v(-leading)
   }
+
+  show link: it => text(fill:blue)[#underline[#it]]
 
   show ref: it => {
      if it.has("element") {
@@ -154,9 +156,7 @@
   set par(justify: true, first-line-indent: 1em, leading: leading)
  
   set block(spacing: leading)
-  // fontの設定
-  set text(font: body-font, size:font-size)
-  set text(cjk-latin-spacing: auto)
+
 
   //直書き引用文献書式の設定
   show: use-bib-item-ref.with(numbering: "1")

@@ -60,7 +60,7 @@ else {return it}
     #numbering(
       el.numbering,
       ..counter(eq).at(el.location())
-    ) ]
+    )]
     } else {it}
   }
 }
